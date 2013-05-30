@@ -1,0 +1,695 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+
+Event for GDG Granada about Intro to HTML5 GAMES
+
+Author: Esteban, organizer of GDG Granada
+Date: May 2013.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduccion a HTML5 Games</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+  
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/io2012_logos.png" style="height:250px;width:250px;"></span>
+      <span><img src="images/deiit logo.jpg" style="height:225px;width:422px;"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>¿Quién soy?</h2>
+    </hgroup>
+    <article id="who">
+		<p>Organizer GDG Granada</p>
+		<p>Student of Computer Science at ETSIIT</p>
+      <p style="margin-top:2em;">
+        <a rel="author">
+          <img src="http://www.google.com/images/icons/ui/gprofile_button-44.png" width="44" height="44"></a> +<a rel="author" href="http://gplus.to/estebandorado"><span>Esteban Dorado Roldan</span></a>
+      </p>
+      <p>
+        <a rel="author" style="margin-left:-8px;" href="https://twitter.com/@mr_esti">
+          <img src="images/twitter_newbird_blue.png" width="58" height="58"></a> <a rel="author" style="margin-left:-5px;" href="https://twitter.com/@mr_esti">@mr_esti</a>
+      </p>
+      <p>
+        <a rel="author" style="margin-left:-8px;" href="https://github.com/mresti">
+          <img src="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/GitHub-Mark.png?1366128852" width="58" height="58"></a><a rel="author" href="https://github.com/mresti" style="margin-left:-5px;">mresti</a>
+      </p>
+      <img src="images/esteban.jpg" style="height:389px;width:292px;margin-left:500px;margin-top:-320px;">
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>HTML5 Games</h2>
+      <h3>WebGL & Three.js</h3>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Why OpenGL?</h2>
+    </hgroup>
+    <article>
+		<img src="images/intro.jpg" style="width:300px;height:150px;margin-top:10px;float: right">
+      <ul>
+        <li>Advanced Graphics in the browser</li>
+        <li>Direct Access to the GPU: acceleration</li>
+        <li>Javascript API</li>
+        <li>Plugin-free</li>
+		<li>Based on OpenGL ES 2.0</li>
+		<li>Supported on almost all desktop browsers:</li>
+      </ul>
+	  <img src="images/browsers.png">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Mobile Browsers</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>BlackBerry (Playbook, BB10)</li>
+        <li>Firefox Mobile/Firefox OS</li>
+        <li>Chrome Beta for Android (w/flags)</li>
+      </ul>
+	  <h2>Also supported with...</h2>
+	  <p></p>
+      <ul>
+        <li>Google Chrome Frame (Plugin for IE)</li>
+        <li>Chromium Embedded Framework (DLL used by Steam, iTunes...)</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>The WebGL Mess</h2>
+	  <h3>WebGL development needs knowledge about:</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Vertex Shaders</li>
+        <li>Fragment Shaders</li>
+        <li>Uniforms</li>
+		<li>Varyings</li>
+		<li>Matrices</li>
+		<li>...</li>
+      </ul>
+	  <p>WebGL doesn't know about cameras, models, materials...</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Three.js</h2>
+	  <h3>Lightweight library that provides a object model with:</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Scene</li>
+        <li>Geometry</li>
+        <li>Material</li>
+		<li>Mesh</li>
+		<li>Light</li>
+		<li>...</li>
+      </ul>
+	  <p>And a "Renderer" to draw the scene (also model load...)</p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>About Three.js</h2>
+    </hgroup>
+    <article id="who">
+		<img src="images/cabello.png" style="float: right;">
+		<p>By Ricardo Cabello (Mr. Doob)</p>
+        <p style="margin-top:2em;">
+          <a rel="author">
+            <img src="http://www.google.com/images/icons/ui/gprofile_button-44.png" width="44" height="44"></a> +<a rel="author" href="https://plus.google.com/104300307601542851567"><span>Ricardo Cabello</span></a>
+        </p>
+        <p>
+          <a rel="author" style="margin-left:-8px;">
+            <img src="images/twitter_newbird_blue.png" width="58" height="58"></a> <a rel="author" style="margin-left:-5px;" href="https://twitter.com/mrdoob">@mrdoob</a>
+        </p>
+		<p></p>
+        <p>
+          <a rel="author" style="margin-left:-8px;">
+            <img src="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/GitHub-Mark.png?1366128852" width="58" height="58"></a>Three.js in GitHub: <br><a href="https://github.com/mrdoob/three.js/" rel="author">https://github.com/mrdoob/three.js/</a>
+        </p>
+		<img src="images/threejstext.jpg" style="float: right;width:224px;height:145px; margin-top:-10px;">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Three.js Demos</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Official examples:<a href="http://mrdoob.github.com/three.js/"> http://mrdoob.github.com/three.js/</a></li>
+        <li>Mr Doob page: <a href="http://www.mrdoob.com/"> http://www.mrdoob.com/</a></li>
+        <li>Hello Racer: <a href="http://helloracer.com/webgl/"> http://helloracer.com/webgl/</a></li>
+		<li>Trigger Rally: <a href="https://triggerrally.com/"> https://triggerrally.com/</a></li>
+		<li>HexGL: <a href="http://hexgl.bkcore.com/"> http://hexgl.bkcore.com/</a></li>
+		<li>Nissan Juke: <a href="http://pierrelepers.com/lab/jthree/"> http://pierrelepers.com/lab/jthree/</a></li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <article>
+      <iframe data-src="http://helloracer.com/webgl/"></iframe>
+    </article>
+  </slide>
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Codelab</h2>
+      <h3>Demo 1</h3>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Before we start</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;My first Three.js app&lt;/title&gt;
+		&lt;style&gt;canvas { width: 100%; height: 100% }&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;script src="js/three.min.js"&gt;&lt;/script&gt;
+		&lt;script&gt;
+			// Our Javascript will go here.
+		&lt;/script&gt;
+		&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Using Three.js</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Download three.min.js from:</li>
+		</ul>
+		<a href="https://github.com/mrdoob/three.js/tree/master/build/">github.com/mrdoob/three.js/tree/master/build/</a>
+		<p></p>
+		<ul>
+			<li>Create an empty page including the js:</li>
+		</ul>
+      <pre class="prettyprint" data-lang="html">
+&lt;script src="js/three.min.js"&gt;&lt;/script&gt;
+</pre>
+		<ul>
+			<li>Avoid scrollbars:</li>
+		</ul>
+      <pre class="prettyprint" data-lang="html">
+&lt;style type="text/css"&gt;
+  body { margin: 0px; overflow: hidden; }
+&lt;/style&gt;
+</pre>
+<ul>
+	<li>There is an inline code editor</li>
+</ul>
+	<a href="http://mrdoob.com/projects/code-editor/">mrdoob.com/projects/code-editor/</a></li>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Setup Scene and Renderer</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+&lt;script src="js/three.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  var scene, renderer;
+  init();
+  function init() {
+    scene = new THREE.Scene();
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+  }
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Camera and Render</h2>
+    </hgroup>
+    <article>
+    <pre class="prettyprint" data-lang="javascript">
+var camera;
+
+//...
+
+camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+camera.position.set(0, 0, 1000);
+</pre>
+<p>To render each frame we call:</p>
+      <pre class="prettyprint" data-lang="javascript">
+  renderer.render(scene, camera);
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Adding a Mesh</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  // Create a Geometry
+  geometry = new THREE.CubeGeometry(200, 200, 200);
+
+  // Create a Material
+  material = new THREE.MeshLambertMaterial({
+  	color : 0xffffff,
+  });
+
+  // Create a Mesh with the Geometry and the Material
+  mesh = new THREE.Mesh(geometry, material);
+
+  // Add it to the Scene
+  scene.add(mesh);
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Adding a Light</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  // Create a Point Light 
+  pointLight = new THREE.PointLight( 0xffffff );
+
+  // Set the point light position 
+  pointLight.position = new THREE.Vector3(1000,1000,0);
+
+  // Add the light to the scene
+  scene.add( pointLight );
+  
+</pre>
+<ul>
+	<li>AmbientLight</li>
+	<li>DirectionalLight</li>
+	<li>SpotLight</li>
+</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Animating</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  animate();
+  
+  function animate() {
+  	// Ask for the next frame
+  	requestAnimationFrame(animate);
+
+  	// Rotate Cube
+  	mesh.rotation.x += 0.01;
+  	mesh.rotation.y += 0.02;
+
+  	// Render Frame
+  	renderer.render(scene, camera);
+  }
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+      <hgroup>
+        <h2>A Basic WebGL Scene</h2>
+      </hgroup>
+    <article>
+      <iframe data-src="codelab/step1.html"></iframe>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Codelab</h2>
+      <h3>Demo 2</h3>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Loading models</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Download from the Three.js GitHub:<br><br>
+				
+				<b>examples/js/loaders/ColladaLoader.js</b></li>
+				<li>Place it in js/ and load it:</li>
+		</ul>
+      <pre class="prettyprint" data-lang="html">
+&lt;script src="js/ColladaLoader.js"&gt;&lt;/script&gt;
+</pre>
+<br>
+<p>To test model load in local you will need to start Chrome with:<br><b>chrome --allow-file-access-from-files</b></p>
+<p><a href="https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally">Más info</a></p>
+		
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>How to run things locally</h2>
+	  <h3>Run local server</h3>
+    </hgroup>
+    <article>
+		<p>If you have Python installed, it should be enough to run this from a command line:</p>
+        <pre class="prettyprint">
+# Python 2.x
+$ python -m SimpleHTTPServer
+</pre>
+        <pre class="prettyprint">
+# Python 3.x
+$ python -m http.server
+</pre>
+<p>This will serve files from the current directory at localhost under port 8000:</p>
+<p><a href="http://localhost:8000/">http://localhost:8000/</a></p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Export a Model with SketchUp</h2>
+    </hgroup>
+    <article>
+		<center><img src="images/sketchup.png"></center>
+		<p></p>
+		<ul>
+			<li>Download the skp model from...</li>
+			<li>We will use the collada format (.dae)</li>
+			<li>Be careful with groups</li>
+		</ul>		
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Load the model</h2>
+	  <h3>Using the ColladaLoader</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  var loader = new THREE.ColladaLoader();
+  loader.options.convertUpAxis = true;
+  loader.load('./car.dae', function(collada) {
+  	// Onload function
+  	car = collada.scene;
+
+  	init();
+  	animate();
+  });
+</pre>	
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Camera</h2>
+	  <h3>Make the camera look at (0,0,0):</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+		  
+camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+camera.position = new THREE.Vector3(0, 1000, 1000);
+camera.lookAt(new THREE.Vector3(0, 0, 0));
+</pre>
+<img src="images/camera.jpg" style="float: right">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Animation</h2>
+	  <h3>We will rotate the car in each frame</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  function animate() {
+  	requestAnimationFrame(animate);
+  	car.rotation.y += 0.02;
+  	renderer.render(scene, camera);
+  }
+</pre>	
+    </article>
+  </slide>
+  
+  <slide>
+      <hgroup>
+        <h2>The Loaded Model</h2>
+      </hgroup>
+    <article>
+      <iframe data-src="codelab/step2.html"></iframe>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Codelab</h2>
+      <h3>Demo 3</h3>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>A Basic Game Scenery</h2>
+	  <h3>Setup keyboard control:</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  keyDown = new Array();
+  
+  for (i = 0; i < 300; i++) keyDown[i] = false;
+  
+  document.onkeydown = function(event) {
+    keyDown[event.keyCode] = true;
+  }
+  
+  document.onkeyup = function(event) {
+    keyDown[event.keyCode] = false;
+  }
+</pre>	
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Accelerate and brake</h2>
+	  <h3>We will add this code in the animate() loop:</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  if (keyDown[38]) { // if Up is pressed
+    if (speed < 100) speed += 0.5;
+  } else {
+    speed -= 1;						
+    if (speed < 0) speed = 0;
+  }
+</pre>	
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Rotate and move the car</h2>
+	  <h3>Rotate on left/right press:</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  if (speed > 0) {
+  	if (keyDown[37]) car.rotation.y += 0.02;
+  	if (keyDown[39]) car.rotation.y -= 0.02;
+  }
+</pre>
+<h3>And move the car:</h3>
+      <pre class="prettyprint" data-lang="javascript">
+  car.position.x += speed * Math.sin(car.rotation.y);
+  car.position.z += speed * Math.cos(car.rotation.y);
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>And more...</h2>
+	  <h3>Camera looking at the car:</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  camera.lookAt(car.position);
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Create a Plane</h2>
+	  <h3>As a reference for the car movement</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+  geometry = new THREE.PlaneGeometry(
+  	50000, 50000, 100, 100);
+
+  material = new THREE.MeshBasicMaterial({
+  	color : 0xcccccc,
+  	wireframe : true});
+
+  mesh = new THREE.Mesh(geometry, material);
+  mesh.rotation.x = Math.PI / 2;
+
+  scene.add(mesh);
+</pre>
+    </article>
+  </slide>
+  
+  <slide>
+      <hgroup>
+        <h2>Play!</h2>
+      </hgroup>
+    <article>
+      <iframe data-src="codelab/step3.html"></iframe>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>And More Three.js Resources</h2>
+    </hgroup>
+    <article>
+        <ul>
+          <li>Official Three.js doc </li>
+	  </ul>
+	<p><a href="http://threejs.org/docs/58/">http://threejs.org/docs/58/</a></p>
+    <ul>
+      <li>Basics of Three.js (Ilmari Heikkinen)</li>
+  </ul>
+<p><a href="http://fhtr.org/BasicsOfThreeJS/">http://fhtr.org/BasicsOfThreeJS/</a></p>
+    <ul>
+      <li>Intro at AeroTwist by Paul Lewis </li>
+  </ul>
+<p><a href="http://www.aerotwist.com/tutorials/getting-started-with-three-js/">http://www.aerotwist.com/tutorials/getting-started-with-three-js/</a></p>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Finally, for a game you will also need Sound</h2>
+    </hgroup>
+    <article>
+        <ul>
+          <li><b>WebAudio (only for webkit/based browsers, soon on FF)</b></li>
+	  </ul>
+	<h3>And Maybe Physics!</h3>
+    <ul>
+      <li>Physijs</li>
+  </ul>
+<p><a href="http://chandlerprall.github.com/Physijs/">http://chandlerprall.github.com/Physijs/</a></p>
+    <ul>
+      <li>Ammo.js</li>
+  </ul>
+<p><a href="https://github.com/kripken/ammo.js/">https://github.com/kripken/ammo.js/</a></p>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+	  <p>Source: <a href="https://github.com/GDGGranada/HTML5_Games_Event" class="white" style="border:none">github.com/GDGGranada/HTML5_Games_Event</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo_white.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
